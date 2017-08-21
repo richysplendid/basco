@@ -1,0 +1,151 @@
+/*
+ * jQuery FlexSlider v2.0
+ * http://www.woothemes.com/flexslider/
+ *
+ * Copyright 2012 WooThemes
+ * Free to use under the GPLv2 license.
+ * http://www.gnu.org/licenses/gpl-2.0.html
+ *
+ * Contributing author: Tyler Smith (@mbmufffin)
+ */
+
+ 
+/* Browser Resets */
+.flex-container a:active,
+.flexslider a:active,
+.flex-container a:focus,
+.flexslider a:focus  {outline: none;}
+.slides,
+.flex-control-nav,
+.flex-direction-nav {margin: 0; padding: 0; list-style: none;} 
+
+/* FlexSlider Necessary Styles
+*********************************/ 
+.flexslider {margin: 0; padding: 0;}
+.flexslider .slides > li {display: none; -webkit-backface-visibility: hidden; position:relative; top:0; margin:0 !important; height:100%; } /* Hide the slides before the JS is loaded. Avoids image jumping */
+.flexslider .slides img {width: 100%; display: block; }
+.flex-pauseplay span {text-transform: capitalize;}
+
+
+/* Clearf ix for the .slides element */
+.slides:after {content: "."; display: block; clear: both; visibility: hidden; line-height: 0; height: 0;} 
+html[xmlns] .slides {display: block;} 
+* html .slides {height: 1%;}
+
+/* No JavaScript Fallback */
+/* If you are not using another script, such as Modernizr, make sure you
+ * include js that eliminates this class on page load */
+.no-js .slides > li:first-child {display: block;}
+
+
+/* FlexSlider Default Theme
+*********************************/
+.flexslider {margin: 0;  position: relative;  zoom: 1; height:100%; }
+.flex-viewport { height:auto; max-height:auto; -webkit-transition: all 1s ease; -moz-transition: all 1s ease; transition: all 1s ease; height:100%; }
+.loading .flex-viewport {max-height: auto; height:100%; }
+.flexslider .slides {zoom: 1; position:relative; z-index:1; height:100%; }
+.slider{ height:100%; }
+
+
+.carousel li {margin-right: 5px}
+
+
+
+
+/* Direction Nav */
+#bp_banner .flex-direction-nav { *height: ;  }
+#bp_banner .flex-direction-nav a {width: 54px; height: 54px; margin: -20px 0 0; display: block; position: absolute; z-index: 9999; cursor: pointer; -webkit-transition: all .3s ease; color:#fff; font-style:italic; text-transform:lowercase; background:url(../images/bp_slider_controls.png) no-repeat; z-index:6;  }
+#bp_banner .flex-direction-nav .flex-next { background-position: 100% 0; right:20px; bottom:auto; top:50%; }
+#bp_banner .flex-direction-nav .flex-prev { left: 20px; bottom:auto; top:50%; }
+#bp_banner .flexslider:hover .flex-next { opacity:0.7;}
+#bp_banner .flexslider:hover .flex-prev {  opacity:0.7;}
+#bp_banner .flexslider:hover .flex-next:hover, #bp_banner .flexslider:hover .flex-prev:hover {opacity: 1;}
+#bp_banner .flex-direction-nav .flex-disabled {opacity: 0; filter:alpha(opacity=0); cursor: default; display:none;}
+#bp_banner .direction_top{ font-size:15px; line-height:1.2em; }
+#bp_banner .direction_bottom{ font-size:18px; line-height:1.6em; }
+
+
+/* Control Nav */
+#bp_banner .flex-control-nav {width: 61px; position: absolute; top:0; bottom: 0; left:0; z-index:2; display:block; text-align:left; background:rgba(0,0,0,0.5); display:none;  }
+#bp_banner .flex-control-nav li { margin: 60px auto !important; display:block; zoom: 1; *display: block; text-align:center;  }
+#bp_banner .flex-control-paging li a { width: 17px; height: 3px; display: inline-block; cursor: pointer; text-indent: -9999px; background:#fff; text-align:center; margin:0 auto; }
+#bp_banner .flex-control-paging li a:hover { box-shadow:none; background:#ffffff;  }
+#bp_banner .flex-control-paging li a.flex-active { cursor: default; box-shadow:none; background:rgba(44,53,75,0.8); width: 17px; height: 3px; }
+#bp_banner .flex-control-nav li:first-child { margin-top:240px !important;  }
+
+
+#bp_banner .flex-control-thumbs {margin: -200px auto 0; position: static; overflow: hidden;}
+#bp_banner .flex-control-thumbs li {width: 25%; float: left; margin: 0;}
+#bp_banner .flex-control-thumbs img {width: 100%; display: block; opacity: .7; cursor: pointer;}
+#bp_banner .flex-control-thumbs img:hover {opacity: 1;}
+#bp_banner .flex-control-thumbs .flex-active {opacity: 1; cursor: default;}
+
+
+
+
+
+
+/* Direction Nav */
+.bp_promo_slider .flex-direction-nav { *height: ;  }
+.bp_promo_slider .flex-direction-nav a {width: 54px; height: 54px; margin: -20px 0 0; display: block; position: absolute; z-index: 9999; cursor: pointer; -webkit-transition: all .3s ease; color:#fff; font-style:italic; text-transform:lowercase; background:url(../images/bp_slider_controls.png) no-repeat; z-index:6;  }
+.bp_promo_slider .flex-direction-nav .flex-next { background-position: 100% 0; right:18%; bottom:40px; }
+.bp_promo_slider.flex-direction-nav .flex-prev { right: 18%; bottom:110px; }
+.bp_promo_slider .flexslider:hover .flex-next { opacity:0.7;}
+.bp_promo_slider .flexslider:hover .flex-prev {  opacity:0.7;}
+.bp_promo_slider .flexslider:hover .flex-next:hover, .flexslider:hover .flex-prev:hover {opacity: 1;}
+.bp_promo_slider .flex-direction-nav .flex-disabled {opacity: 0; filter:alpha(opacity=0); cursor: default; display:none;}
+.bp_promo_slider .direction_top{ font-size:15px; line-height:1.2em; }
+.bp_promo_slider .direction_bottom{ font-size:18px; line-height:1.6em; }
+
+
+/* Control Nav */
+.bp_promo_slider .flex-control-nav {width: 61px; position: absolute; top:0; bottom: 0; left:0; z-index:2; display:block; text-align:left; background:rgba(0,0,0,0.5);  }
+.bp_promo_slider .flex-control-nav li { margin: 60px auto !important; display:block; zoom: 1; *display: block; text-align:center;  }
+.bp_promo_slider .flex-control-paging li a { width: 17px; height: 3px; display: inline-block; cursor: pointer; text-indent: -9999px; background:#fff; text-align:center; margin:0 auto; }
+.bp_promo_slider .flex-control-paging li a:hover { box-shadow:none; background:#ffffff;  }
+.bp_promo_slider .flex-control-paging li a.flex-active { cursor: default; box-shadow:none; background:rgba(44,53,75,0.8); width: 17px; height: 3px; }
+.bp_promo_slider .flex-control-nav li:first-child { margin-top:240px !important;  }
+
+
+.bp_promo_slider .flex-control-thumbs {margin: -200px auto 0; position: static; overflow: hidden;}
+.bp_promo_slider .flex-control-thumbs li {width: 25%; float: left; margin: 0;}
+.bp_promo_slider .flex-control-thumbs img {width: 100%; display: block; opacity: .7; cursor: pointer;}
+.bp_promo_slider .flex-control-thumbs img:hover {opacity: 1;}
+.bp_promo_slider .flex-control-thumbs .flex-active {opacity: 1; cursor: default;}
+
+
+.bp_selected_project_slider .flex-direction-nav { *height: ;  }
+.bp_selected_project_slider .flex-direction-nav a {width: 54px; height: 54px; margin: -20px 0 0; display: block; position: absolute; z-index: 9999; cursor: pointer; -webkit-transition: all .3s ease; color:#fff; font-style:italic; text-transform:lowercase; background:url(../images/bp_slider_controls.png) no-repeat; z-index:6;  }
+.bp_selected_project_slider .flex-direction-nav{ position:absolute !important; z-index:6 !important; left:12%; bottom:0; }
+.bp_selected_project_slider .flex-direction-nav .flex-next { background-position: 100% 0; left:10%; bottom:40px; }
+.bp_selected_project_slider .flex-direction-nav .flex-prev { left: 10%; bottom:110px; }
+
+
+@media screen and (max-width: 1400px){
+}
+
+@media screen and (max-width: 860px) {
+
+}
+
+@media screen and (max-width: 960px){
+
+.flex-control-nav { display:none; }
+
+.flex-direction-nav .flex-next{ background-position: 100% 0; right:20px; bottom:40px; }
+.flex-direction-nav .flex-prev{ right: auto; left:20px; bottom:40px; }
+
+.bp_selected_project_slider .flex-direction-nav{ position:absolute !important; z-index:9 !important; left:0; right:0; bottom:0; }
+.bp_selected_project_slider .flex-direction-nav .flex-next { background-position: 100% 0; right:20px; left:auto; bottom:40px; }
+.bp_selected_project_slider .flex-direction-nav .flex-prev { left: 20px; bottom:40px; }
+
+}
+
+@media screen and (max-width: 750px){
+
+/*.flex-direction-nav .flex-next {background-position: 100% 0; right: 3%;  }
+.flex-direction-nav .flex-prev {left: 3%; }
+.flexslider:hover .flex-next { right: 3%; opacity:0.7;}
+.flexslider:hover .flex-prev { left: 3%; opacity:0.7;}*/
+
+}
