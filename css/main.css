@@ -626,7 +626,8 @@ a {
     -o-transform: translateY(-7px);
     transform: translateY(-7px); } }
 html {
-  font-size: 100%; }
+  font-size: 100%;
+  background: #ff0; }
 
 body {
   margin: 0;
